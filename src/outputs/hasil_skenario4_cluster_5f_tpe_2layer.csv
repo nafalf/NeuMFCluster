@@ -1,0 +1,2 @@
+skenario,model,cluster,tpe,HR@10_mean,HR@10_std,NDCG@10_mean,NDCG@10_std,seeds,best_params,emb_dim,cluster_dim,dropout,lr,batch_size,n_clusters,n_trials,tune_epochs,epochs,notes
+4,"NeuMF + K-Means Cluster + TPE (5 Fitur Audio, MLP 2-Layer)",True,True,0.8449,0.0016,0.6151,0.0017,"[42, 123, 456]","{'emb_dim': 64, 'cluster_dim': 16, 'lr': 0.0006143217602527595, 'dropout': 0.08082374580629714, 'batch_size': 2048}",64,16,0.08082374580629714,0.0006143217602527595,2048,3,25,10,30,"MLP 2 layer [64,32], cluster embedding hanya di MLP, TPE optimized"

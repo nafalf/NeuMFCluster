@@ -1,0 +1,2 @@
+skenario,model,cluster,tpe,HR@10_mean,HR@10_std,NDCG@10_mean,NDCG@10_std,seeds,best_params,n_trials,tune_epochs,epochs,notes
+3,NeuMF Baseline + TPE,False,True,0.8155,0.0027,0.5596,0.0022,"[42, 123, 456]","{'emb_dim': 32, 'lr': 0.0090060204999397, 'dropout': 0.24187626008357324, 'batch_size': 512}",25,10,30,"MLP 2 layer, no Xavier init, TPE optimized"

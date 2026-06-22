@@ -1,0 +1,2 @@
+skenario,model,cluster,tpe,HR@10_mean,HR@10_std,NDCG@10_mean,NDCG@10_std,seeds,emb_dim,dropout,lr,batch_size,epochs,notes
+1,NeuMF Baseline,False,False,0.7519,0.0002,0.4937,0.0007,"[42, 123, 456]",64,0.2,0.001,1024,30,"MLP 2 layer, no Xavier init, fixed params"

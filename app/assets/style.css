@@ -1,0 +1,544 @@
+﻿/* Global font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+/* General background (if streamlit allows, though we usually just let it inherit dark theme) */
+/* Force some Spotify-like colors for specific elements */
+
+/* Header gradient */
+.main-header {
+    background: linear-gradient(135deg, #1DB954 0%, #121212 100%);
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+.main-header h1 { margin: 0; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.04em; }
+.main-header p  { margin: 0.5rem 0 0; opacity: 0.85; font-size: 1.05rem; }
+
+/* Hit/Miss banners */
+.hit-banner {
+    background: #1DB954; /* Solid Spotify Green */
+    color: #121212; /* Dark text for contrast like Spotify buttons */
+    padding: 1rem 2rem;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(29,185,84,.3);
+}
+.miss-banner {
+    background: #e74c3c;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(231,76,60,.3);
+}
+
+/* Song cards */
+.song-card,
+.song-card-grid {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    margin-bottom: 0.9rem;
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+}
+.song-card {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr) minmax(170px, 220px);
+    gap: 1.2rem;
+    align-items: center;
+    min-height: 178px;
+    height: 178px;
+    padding: 1.15rem;
+    overflow: hidden;
+}
+.song-card-grid {
+    display: flex;
+    flex-direction: column;
+    height: 390px;
+    padding: 1rem;
+    overflow: hidden;
+}
+.song-card:hover,
+.song-card-grid:hover {
+    background: #202020;
+    border-color: #3a3a3a;
+}
+.song-card-positive {
+    background: #1DB954;
+    border-color: #1DB954;
+    color: #08140c;
+}
+.song-card-positive:hover {
+    background: #20c95d;
+    border-color: #20c95d;
+}
+.song-card-positive .song-meta,
+.song-card-positive .song-score span {
+    color: #0b2b16;
+}
+.song-card-positive .song-link {
+    color: #08140c;
+    border-color: rgba(8,20,12,0.45);
+    background: rgba(255,255,255,0.28);
+}
+.song-cover {
+    width: 118px;
+    height: 118px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    background: #101010;
+}
+.song-card-grid .song-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 auto;
+}
+.song-cover-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8f8f8f;
+    font-size: 0.78rem;
+    border: 1px solid #303030;
+}
+.song-body,
+.song-grid-body {
+    min-width: 0;
+}
+.song-grid-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding-top: 0.75rem;
+    min-height: 0;
+}
+.song-rank {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+}
+.song-title {
+    font-size: 1.04rem;
+    font-weight: 800;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.song-meta {
+    color: #b3b3b3;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-top: 0.35rem;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.song-label {
+    font-weight: 800;
+    color: inherit;
+}
+.song-badge {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    padding: 0.22rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.26);
+    color: inherit;
+    vertical-align: middle;
+}
+.song-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    height: 100%;
+    padding: 0.25rem 0;
+}
+.song-score span,
+.song-score strong {
+    display: block;
+}
+.song-score span {
+    color: #b3b3b3;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+.song-score strong {
+    font-size: 1.55rem;
+    line-height: 1.1;
+}
+.song-grid-score {
+    margin-top: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+.song-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0.35rem 0.8rem;
+    border-radius: 7px;
+    border: 1px solid #3b4657;
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: 700;
+    align-self: center;
+    margin-top: auto;
+}
+.song-link:hover {
+    text-decoration: none;
+    border-color: #1DB954;
+}
+.cluster-interpretation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 1rem 0 0.4rem;
+}
+.cluster-interpretation-card {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    padding: 1rem;
+}
+.cluster-interpretation-card strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.45rem;
+}
+.cluster-interpretation-card p {
+    color: #b3b3b3;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin: 0;
+}
+.cluster-0 { border-left: 4px solid #1DB954; }
+.cluster-1 { border-left: 4px solid #3498db; }
+.cluster-2 { border-left: 4px solid #e67e22; }
+@media (max-width: 720px) {
+    .song-card {
+        grid-template-columns: 76px minmax(0, 1fr);
+        height: auto;
+        min-height: 170px;
+    }
+    .song-cover {
+        width: 76px;
+        height: 76px;
+    }
+    .song-actions {
+        grid-column: 1 / -1;
+    }
+    .cluster-interpretation-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cluster-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 0.6rem 0 1.2rem;
+}
+.cluster-summary-card {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+}
+.cluster-summary-card strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+}
+.cluster-summary-card span {
+    color: #b3b3b3;
+    font-size: 0.86rem;
+}
+@media (max-width: 720px) {
+    .cluster-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Flowchart nodes (via HTML) */
+.flow-node-green  { background:#1DB954; color:#121212; padding:10px 16px; border-radius:50px;
+                    font-weight:700; display:inline-block; margin:4px; }
+.flow-node-blue   { background:#282828; color:#fff; padding:10px 16px; border-radius:50px;
+                    font-weight:600; display:inline-block; margin:4px; border: 1px solid #333; }
+.flow-node-orange { background:#535353; color:#fff; padding:10px 16px; border-radius:50px;
+                    font-weight:600; display:inline-block; margin:4px; }
+.flow-arrow       { font-size:1.5rem; color:#b3b3b3; display:inline-block; margin:0 4px; vertical-align:middle; }
+.flow-row         { display:flex; align-items:center; justify-content:center;
+                    flex-wrap:wrap; gap:4px; margin: 8px 0; }
+
+/* Score flow diagram */
+.score-flow {
+    background: #151515;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.score-flow-row,
+.score-flow-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin: 0.8rem 0;
+}
+.score-flow-arrows {
+    margin: 0.15rem 0;
+}
+.score-flow-arrows.split {
+    justify-content: space-around;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.score-arrow-down {
+    color: #1DB954;
+    font-size: 1.2rem;
+    font-weight: 900;
+    line-height: 1;
+    min-width: 150px;
+    text-align: center;
+}
+.score-flow-branches {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.score-branch {
+    background: #101010;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    padding: 1rem;
+}
+.score-branch-title {
+    color: #1DB954;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+.score-node {
+    background: #232323;
+    border: 1px solid #3a3a3a;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: 700;
+    min-width: 150px;
+    padding: 0.75rem 0.9rem;
+    text-align: center;
+}
+.score-node.input {
+    background: #1DB954;
+    border-color: #1DB954;
+    color: #08140c;
+}
+.score-node.final {
+    background: #1DB954;
+    border-color: #1DB954;
+    color: #08140c;
+}
+.score-node.wide {
+    max-width: 560px;
+    width: 100%;
+}
+.score-note {
+    color: #b3b3b3;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    margin-top: 0.75rem;
+}
+.score-note.center {
+    margin-top: 0;
+    text-align: center;
+    max-width: 720px;
+}
+.score-arrow {
+    color: #b3b3b3;
+    font-weight: 800;
+}
+@media (max-width: 720px) {
+    .score-flow-branches {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Metric cards */
+div[data-testid="metric-container"] {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: background-color 0.3s;
+}
+div[data-testid="metric-container"]:hover {
+    background: #282828;
+}
+.dashboard-note {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin: 1.2rem 0 1.6rem;
+}
+.dashboard-note strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+}
+.dashboard-note span {
+    color: #b3b3b3;
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+}
+.dashboard-note code {
+    background: #101010;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    color: #1DB954;
+    padding: 0.05rem 0.25rem;
+}
+
+/* System flow page */
+.system-flow {
+    background: #151515;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin: 0.7rem 0 1.4rem;
+}
+.system-flow-node {
+    background: #232323;
+    border: 1px solid #3a3a3a;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: 800;
+    margin: 0 auto;
+    max-width: 520px;
+    padding: 0.8rem 1rem;
+    text-align: center;
+}
+.system-flow-node strong {
+    display: block;
+    font-size: 0.98rem;
+    margin-bottom: 0.25rem;
+}
+.system-flow-node span {
+    color: #b3b3b3;
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.45;
+}
+.system-flow-node:first-child,
+.system-flow-node:last-child {
+    background: #1DB954;
+    border-color: #1DB954;
+    color: #08140c;
+}
+.system-flow-node:first-child span,
+.system-flow-node:last-child span {
+    color: #0b2b16;
+}
+.system-flow-arrow {
+    color: #1DB954;
+    font-size: 1.45rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0.2rem 0;
+    text-align: center;
+}
+.encoding-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 0.7rem 0 1rem;
+}
+.encoding-card {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+}
+.encoding-card strong {
+    display: block;
+    font-size: 0.98rem;
+    margin-bottom: 0.45rem;
+}
+.encoding-card span {
+    color: #b3b3b3;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+.encoding-card code {
+    background: #101010;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    color: #1DB954;
+    padding: 0.05rem 0.25rem;
+}
+.model-info-card {
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 8px;
+    min-height: 132px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+}
+.model-info-card strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.45rem;
+}
+.model-info-card span {
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+.model-info-wide {
+    min-height: 0;
+}
+@media (max-width: 720px) {
+    .encoding-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sidebar */
+.sidebar-footer {
+    color: #b3b3b3;
+    font-size: 0.78rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Khusus elemen custom HTML saja, jangan override seluruh Streamlit */
+.main-header p, .main-header h1 { color: #fff; }
